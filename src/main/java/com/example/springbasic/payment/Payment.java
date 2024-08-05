@@ -1,4 +1,4 @@
-package com.example.springbasic;
+package com.example.springbasic.payment;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

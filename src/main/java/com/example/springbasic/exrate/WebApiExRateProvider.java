@@ -1,5 +1,7 @@
-package com.example.springbasic;
+package com.example.springbasic.exrate;
 
+import com.example.springbasic.ExRateData;
+import com.example.springbasic.payment.ExRateProvider;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.BufferedReader;

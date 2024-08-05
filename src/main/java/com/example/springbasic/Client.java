@@ -1,5 +1,7 @@
 package com.example.springbasic;
 
+import com.example.springbasic.payment.Payment;
+import com.example.springbasic.payment.PaymentService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

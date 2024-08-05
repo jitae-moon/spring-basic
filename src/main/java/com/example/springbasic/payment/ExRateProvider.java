@@ -1,4 +1,4 @@
-package com.example.springbasic;
+package com.example.springbasic.payment;
 
 import java.io.IOException;
 import java.math.BigDecimal;
