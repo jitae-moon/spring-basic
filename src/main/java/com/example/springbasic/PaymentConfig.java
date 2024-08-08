@@ -1,14 +1,12 @@
 package com.example.springbasic;
 
-import com.example.springbasic.api.ApiTemplate;
-import com.example.springbasic.api.ErApiExRateExtractor;
-import com.example.springbasic.api.SimpleApiExecutor;
-import com.example.springbasic.exrate.WebApiExRateProvider;
+import com.example.springbasic.exrate.RestTemplateExRateProvider;
 import com.example.springbasic.payment.ExRateProvider;
 import com.example.springbasic.payment.PaymentService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 
 import java.time.Clock;
 
@@ -23,7 +21,7 @@ public class PaymentConfig {
 
     @Bean
     public ExRateProvider exRateProvider() {
-        return new WebApiExRateProvider(apiTemplate());
+        return new RestTemplateExRateProvider(restTemplate());
     }
 
     @Bean
@@ -32,8 +30,8 @@ public class PaymentConfig {
     }
 
     @Bean
-    public ApiTemplate apiTemplate() {
-        return new ApiTemplate(new SimpleApiExecutor(), new ErApiExRateExtractor());
+    public RestTemplate restTemplate() {
+        return new RestTemplate();
     }
 
 }
