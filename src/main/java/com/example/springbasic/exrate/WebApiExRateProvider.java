@@ -1,6 +1,7 @@
 package com.example.springbasic.exrate;
 
 import com.example.springbasic.ExRateData;
+import com.example.springbasic.api.ApiExecutor;
 import com.example.springbasic.api.SimpleApiExecutor;
 import com.example.springbasic.payment.ExRateProvider;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -13,15 +14,17 @@ import java.net.URISyntaxException;
 
 public class WebApiExRateProvider implements ExRateProvider {
 
+    // Client
+    // Client가 Callback을 만들어서 Template을 호출
     @Override
     public BigDecimal getExRate(String currency) {
         String url = "https://open.er-api.com/v6/latest/" + currency;
 
-        return runApiForExRate(url);
+        return runApiForExRate(url, new SimpleApiExecutor());
     }
 
     // Template
-    private static BigDecimal runApiForExRate(String url) {
+    private static BigDecimal runApiForExRate(String url, ApiExecutor apiExecutor) { // Template & callback
         URI uri;
         try {
             uri = new URI(url);
@@ -31,7 +34,7 @@ public class WebApiExRateProvider implements ExRateProvider {
 
         String response;
         try {
-            response = new SimpleApiExecutor().execute(uri);
+            response = apiExecutor.execute(uri);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
